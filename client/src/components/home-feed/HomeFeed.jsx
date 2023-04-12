@@ -31,8 +31,9 @@ function HomeFeed() {
             <Header title="Social Media Site" setCreatePost={setCreatePost} />
             <div id="home-feed-container">
                 <div id="home-feed-post-container">
-                    {posts.map((post_id) => (
+                    {posts.map((post_id, index) => (
                         <ViewPostSmall
+                            key={index}
                             post_id={post_id}
                             setViewFullPost={setViewFullPost}
                             setViewFullPostId={setViewFullPostId}

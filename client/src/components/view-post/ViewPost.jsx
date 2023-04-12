@@ -68,6 +68,7 @@ function ViewPost({setViewFullPost, viewFullPostId}) {
         try{
             await axios.post("http://localhost:8000/api/postComment", comment_data)
             setForceReload(!forceReload);
+            commentRef.current.value = "";
         }
         catch(err) {
             console.log(err)
@@ -102,7 +103,7 @@ function ViewPost({setViewFullPost, viewFullPostId}) {
         <div className="view-post-comments-container">
             <p>Comments</p>
             <div className="vp-comments-posted-container">
-                {post.comments.map(item => <Comment data={item} />)}
+                {post.comments.map((item, index) => <Comment key={index} data={item} />)}
             </div>
             <div className="view-post-make-comment-container">
                 <input className="vp-comment-box" type="text" placeholder="Enter your comment here..." ref={commentRef} />

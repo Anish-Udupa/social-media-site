@@ -79,8 +79,10 @@ function CreatePost({setCreatePost}){
     formData.append('photo', imageFile);  // Because backend has file as photo
     formData.append('desc', desc);
 
-
-    // console.log(formData)
+    // // Printing out contents of formdata
+    // for (var key of formData.entries()) {
+    //   console.log(key[0] + ', ' + key[1]);
+    // }
     // console.log(username)
     // console.log(desc)
     // console.log(imageFile)
