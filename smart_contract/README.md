@@ -13,5 +13,7 @@ npx hardhat run scripts/deploy.js
 ```
 
 ## Create .env file and add the following
+```shell
 PRIVATE_KEY = "<wallet private key>"
 NETWORK_URL = "<blockchain network url>"
+```
