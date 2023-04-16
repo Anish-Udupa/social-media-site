@@ -9,6 +9,8 @@ import { login_required } from '../api/auth.js';
 import multer_upload from '../lib/multer_upload.js';
 // const multer_upload = multer({ dest: 'post-pics/' })
 
+import { sendTransactionToBlockchain } from '../utils/Blockchain.js';
+
 router.get('/get/:post_id', async (req, res, next) => {
     if (req.params.post_id != null) {
         const post = await PostSchema.findOne({ _id: req.params.post_id });
@@ -62,7 +64,15 @@ router.post(
             console.log(err);
             res.send(err);
         }
+
+        // Deploy post on blockchain
+
     }
 );
+
+router.get("/test", (req, res) => {
+    sendTransactionToBlockchain();
+    res.send("Success")
+})
 
 export default router;
