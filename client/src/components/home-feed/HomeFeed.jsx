@@ -22,7 +22,11 @@ function HomeFeed() {
 
     useEffect(() => {
         (async () => {
-            const res = await fetch(join_path(server_v2_uri, 'api/v2', `recommendations?username=${localStorage.getItem('username')}`));
+            // The old Express server's endpoint. Comment it later
+            const res = await fetch('http://localhost:8000/api/getallposts');
+            
+            // The new Spring server's endpoint
+            // const res = await fetch(join_path(server_v2_uri, 'api/v2', `recommendations?username=${localStorage.getItem('username')}`));
             const json = await res.json();
 
             setPosts(json);
