@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import './ViewPostSmall.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faComment } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faComment, faCheck } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
 function ViewPostSmall({ post_id, seed, setViewFullPost, setViewFullPostId }) {
@@ -14,10 +14,15 @@ function ViewPostSmall({ post_id, seed, setViewFullPost, setViewFullPostId }) {
             const res = await fetch(`http://localhost:8000/api/post/get/${post_id}`);
             const json = await res.json();
 
+            // if(json.verified)
+            //     setPost(json);
+            // else
+            //     console.log("Unverified post: " + post_id)
             setPost(json);
-            
+        console.log(json)
         })();
     }, [postLiked]);
+
 
     const postClicked = () => {
         setViewFullPost(true);
@@ -49,6 +54,7 @@ function ViewPostSmall({ post_id, seed, setViewFullPost, setViewFullPostId }) {
 
     return (
         post && (<div className="vp-small-container" onClick={postClicked} onDoubleClick={likePost}>
+            { post.verified && (<FontAwesomeIcon className='vp-small-tick' icon={faCheck} />)}
             <img
                 className="vp-small-img"
                 src={`http://localhost:8000/image/${post.pic}`}
