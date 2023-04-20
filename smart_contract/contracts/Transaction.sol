@@ -9,10 +9,13 @@ contract Transaction {
         string pic;    
     }
 
+    event Transfer(string _username, string _desc, string _pic);
+
     Post[] post_arr;
 
     function addToBlockchain(string memory username, string memory desc, string memory pic) public {
         post_arr.push(Post(username, desc, pic));
+        emit Transfer(username, desc, pic);
     }
 
     function getAllTransaction() public view returns(Post[] memory) {

@@ -17,3 +17,8 @@ npx hardhat run scripts/deploy.js
 PRIVATE_KEY = "<wallet private key>"
 NETWORK_URL = "<blockchain network url>"
 ```
+
+## To deploy the application
+```shell
+npx hardhat run .\scripts\deploy.js --network goerli
+```
